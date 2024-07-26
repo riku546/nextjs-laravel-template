@@ -12,7 +12,7 @@
     cp .env.example .env.local
 
 
-### プロジェックの立ち上げ
+# プロジェックの立ち上げ
 
 #### laravel
 
