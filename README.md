@@ -1,24 +1,24 @@
-#初期設定
+    #初期設定
 
-###laravelのディレクトリー
+    ###laravelのディレクトリー
 
     composer install
     php artisan breeze:install 
     php artisan migrate
 
-###nextjsのディレクトリー
+     ###nextjsのディレクトリー
 
     npm i
     cp .env.example .env.local
 
 
-###プロジェックの立ち上げ
+     ###プロジェックの立ち上げ
 
-  ####laravel
+      ####laravel
 
     php artisan serve
 
 
-  ####nextjs
+      ####nextjs
 
     npm run dev
