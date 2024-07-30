@@ -4,6 +4,7 @@
 ・php  
 ・composer 
 ・mysqlやpostgresqlなど
+
 これらがインストールされていること。
 
 ### laravelのディレクトリー
