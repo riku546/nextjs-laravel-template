@@ -1,5 +1,11 @@
 # 初期設定
 
+## 前提条件
+・php  
+・composer 
+・mysqlやpostgresqlなど
+これらがインストールされていること。
+
 ### laravelのディレクトリー
 
     composer install
