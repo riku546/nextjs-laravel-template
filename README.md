@@ -1,6 +1,7 @@
 # 初期設定
 
 ## 前提条件
+・wsl2
 ・php  
 ・composer 
 ・mysqlやpostgresqlなど
