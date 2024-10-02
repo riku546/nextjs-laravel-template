@@ -18,7 +18,7 @@
 ### nextjsのディレクトリー
 
     npm i
-    cp .env.example .env.local
+    cp .env.example .env
 
 
 # プロジェックの立ち上げ
