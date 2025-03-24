@@ -110,7 +110,7 @@ const PasswordReset = () => {
                     <Button>Reset Password</Button>
                 </div>
             </form>
-        </AuthC>
+        </AuthCard>
     )
 }
 

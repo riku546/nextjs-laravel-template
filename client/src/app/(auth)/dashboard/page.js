@@ -9,23 +9,31 @@ import ResponsiveNavLink, {
 } from '@/app/(auth)/ResponsiveNavLink'
 import { DropdownButton } from '@/app/(auth)/DropdownLink'
 import { useAuth } from '@/hooks/auth'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { Undo2 } from 'lucide-react'
+import ReactLoading from 'react-loading'
 
 export default function Page() {
     const { user } = useAuth({ middleware: 'auth' })
 
     if (!user) {
         return (
-            <p className="flex h-screen items-center justify-center">
-                ローディング...
-            </p>
+            <div className="flex h-screen space-x-4 bg-slate-800 items-center justify-center">
+                <ReactLoading
+                    type={'spin'}
+                    color="#3B82F6"
+                    height={50}
+                    width={50}
+                />
+                <p className=" text-gray-300 ">ローディングしています</p>
+            </div>
         )
     }
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <Navigation user={user} />
+        <div className="min-h-screen bg-slate-800">
+            <Navigation user={''} />
 
             <Dashboard />
         </div>
@@ -33,31 +41,24 @@ export default function Page() {
 }
 
 const Dashboard = () => {
+    const router = useRouter()
+
     return (
         <>
-            <Header title="Dashboard" />
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 bg-white border-b border-gray-200">
-                            You are logged in!
+                    <div className="flex flex-col space-y-3 bg-slate-700 p-6  overflow-hidden shadow-sm sm:rounded-lg">
+                        <p className="text-gray-300"> You are logged in!</p>
+                        <div
+                            className="flex items-center text-gray-300 space-x-2 cursor-pointer hover:text-gray-400"
+                            onClick={() => router.push('/')}>
+                            <Undo2 />
+                            <p>ホームに戻る</p>
                         </div>
                     </div>
                 </div>
             </div>
         </>
-    )
-}
-
-const Header = ({ title }) => {
-    return (
-        <header className="bg-white shadow">
-            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    {title}
-                </h2>
-            </div>
-        </header>
     )
 }
 
@@ -67,7 +68,7 @@ const Navigation = ({ user }) => {
     const [open, setOpen] = useState(false)
 
     return (
-        <nav className="bg-white border-b border-gray-100">
+        <nav className="bg-slate-800 border-b border-zinc-400">
             {/* Primary Navigation Menu */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
@@ -75,7 +76,7 @@ const Navigation = ({ user }) => {
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
                             <Link href="/dashboard">
-                                <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" />
+                                <ApplicationLogo className="block h-10 w-auto fill-current text-gray-400" />
                             </Link>
                         </div>
 
@@ -94,6 +95,7 @@ const Navigation = ({ user }) => {
                         <Dropdown
                             align="right"
                             width="48"
+                            contentClasses="py-1 bg-slate-700"
                             trigger={
                                 <button className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
                                     <div>{user?.name}</div>

@@ -104,7 +104,7 @@ const Login = () => {
                             }
                         />
 
-                        <span className="ml-2 text-sm text-gray-600">
+                        <span className="ml-2 text-sm text-gray-300">
                             Remember me
                         </span>
                     </label>
@@ -113,7 +113,7 @@ const Login = () => {
                 <div className="flex items-center justify-end mt-4">
                     <Link
                         href="/forgot-password"
-                        className="underline text-sm text-gray-600 hover:text-gray-900">
+                        className="underline text-sm text-gray-300 hover:text-gray-400">
                         Forgot your password?
                     </Link>
 
