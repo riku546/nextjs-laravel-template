@@ -1,14 +1,65 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import Dropdown from '@/components/Dropdown'
+'use client'
+
+import ApplicationLogo from '@/app/(auth)/ApplicationLogo'
+import Dropdown from '@/app/(auth)/Dropdown'
 import Link from 'next/link'
-import NavLink from '@/components/NavLink'
+import NavLink from '@/app/(auth)/NavLink'
 import ResponsiveNavLink, {
     ResponsiveNavButton,
-} from '@/components/ResponsiveNavLink'
-import { DropdownButton } from '@/components/DropdownLink'
+} from '@/app/(auth)/ResponsiveNavLink'
+import { DropdownButton } from '@/app/(auth)/DropdownLink'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+
+export default function Page() {
+    const { user } = useAuth({ middleware: 'auth' })
+
+    if (!user) {
+        return (
+            <p className="flex h-screen items-center justify-center">
+                ローディング...
+            </p>
+        )
+    }
+
+    return (
+        <div className="min-h-screen bg-gray-100">
+            <Navigation user={user} />
+
+            <Dashboard />
+        </div>
+    )
+}
+
+const Dashboard = () => {
+    return (
+        <>
+            <Header title="Dashboard" />
+            <div className="py-12">
+                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 bg-white border-b border-gray-200">
+                            You are logged in!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const Header = ({ title }) => {
+    return (
+        <header className="bg-white shadow">
+            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                    {title}
+                </h2>
+            </div>
+        </header>
+    )
+}
 
 const Navigation = ({ user }) => {
     const { logout } = useAuth()
@@ -153,5 +204,3 @@ const Navigation = ({ user }) => {
         </nav>
     )
 }
-
-export default Navigation

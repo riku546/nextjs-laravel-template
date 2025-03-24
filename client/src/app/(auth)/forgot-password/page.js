@@ -1,12 +1,15 @@
 'use client'
 
-import Button from '@/components/Button'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import Button from '@/app/(auth)/Button'
+import Input from '@/app/(auth)/Input'
+import InputError from '@/app/(auth)/InputError'
+import Label from '@/app/(auth)/Label'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
+import ApplicationLogo from '@/app/(auth)/ApplicationLogo'
+import AuthCard from '../AuthCard'
+import Link from 'next/link'
 
 const Page = () => {
     const { forgotPassword } = useAuth({
@@ -25,11 +28,16 @@ const Page = () => {
     }
 
     return (
-        <>
+        <AuthCard
+            logo={
+                <Link href="/">
+                    <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                </Link>
+            }>
             <div className="mb-4 text-sm text-gray-600">
                 Forgot your password? No problem. Just let us know your email
-                address and we will email you a password reset link that
-                will allow you to choose a new one.
+                address and we will email you a password reset link that will
+                allow you to choose a new one.
             </div>
 
             {/* Session Status */}
@@ -57,7 +65,7 @@ const Page = () => {
                     <Button>Email Password Reset Link</Button>
                 </div>
             </form>
-        </>
+        </AuthCard>
     )
 }
 
