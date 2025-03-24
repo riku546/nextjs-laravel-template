@@ -1,13 +1,15 @@
 'use client'
 
-import Button from '@/components/Button'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import Button from '@/app/(auth)/Button'
+import Input from '@/app/(auth)/Input'
+import InputError from '@/app/(auth)/InputError'
+import Label from '@/app/(auth)/Label'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
+import AuthCard from '../../AuthCard'
+import ApplicationLogo from '@/app/(auth)/ApplicationLogo'
 
 const PasswordReset = () => {
     const searchParams = useSearchParams()
@@ -37,7 +39,11 @@ const PasswordReset = () => {
     }, [searchParams.get('email')])
 
     return (
-        <>
+        <AuthCard logo={
+            <Link href="/">
+                <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+            </Link>
+        }>
             {/* Session Status */}
             <AuthSessionStatus className="mb-4" status={status} />
 
@@ -104,7 +110,7 @@ const PasswordReset = () => {
                     <Button>Reset Password</Button>
                 </div>
             </form>
-        </>
+        </AuthC>
     )
 }
 

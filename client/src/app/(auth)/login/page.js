@@ -1,14 +1,16 @@
 'use client'
 
-import Button from '@/components/Button'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import Button from '@/app/(auth)/Button'
+import Input from '@/app/(auth)/Input'
+import InputError from '@/app/(auth)/InputError'
+import Label from '@/app/(auth)/Label'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
+import AuthCard from '../AuthCard'
+import ApplicationLogo from '@/app/(auth)/ApplicationLogo'
 
 const Login = () => {
     const router = useRouter()
@@ -45,7 +47,12 @@ const Login = () => {
     }
 
     return (
-        <>
+        <AuthCard
+            logo={
+                <Link href="/">
+                    <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                </Link>
+            }>
             <AuthSessionStatus className="mb-4" status={status} />
             <form onSubmit={submitForm}>
                 {/* Email Address */}
@@ -79,10 +86,7 @@ const Login = () => {
                         autoComplete="current-password"
                     />
 
-                    <InputError
-                        messages={errors.password}
-                        className="mt-2"
-                    />
+                    <InputError messages={errors.password} className="mt-2" />
                 </div>
 
                 {/* Remember Me */}
@@ -116,7 +120,7 @@ const Login = () => {
                     <Button className="ml-3">Login</Button>
                 </div>
             </form>
-        </>
+        </AuthCard>
     )
 }
 
