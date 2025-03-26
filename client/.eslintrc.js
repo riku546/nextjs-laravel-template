@@ -48,4 +48,15 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         semi: ['error', 'never'],
     },
+    overrides: [
+        {
+            files: ['*.tsx', '*.ts'],
+            parser: '@typescript-eslint/parser',
+            extends: ['plugin:@typescript-eslint/recommended'],
+            rules: {
+                '@typescript-eslint/no-explicit-any': 'warn',
+                '@typescript-eslint/explicit-module-boundary-types': 'off',
+            },
+        },
+    ],
 }
