@@ -2,16 +2,16 @@
 
 import ApplicationLogo from '@/app/(auth)/ApplicationLogo'
 import Dropdown from '@/app/(auth)/Dropdown'
-import Link from 'next/link'
+import { DropdownButton } from '@/app/(auth)/DropdownLink'
 import NavLink from '@/app/(auth)/NavLink'
 import ResponsiveNavLink, {
     ResponsiveNavButton,
 } from '@/app/(auth)/ResponsiveNavLink'
-import { DropdownButton } from '@/app/(auth)/DropdownLink'
 import { useAuth } from '@/hooks/auth'
+import { Undo2 } from 'lucide-react'
+import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { Undo2 } from 'lucide-react'
 import ReactLoading from 'react-loading'
 
 export default function Page() {
